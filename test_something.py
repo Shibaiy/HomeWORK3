@@ -13,7 +13,11 @@ def test_1(browser_management):
     browser.element('div.react-datepicker__week > div[aria-label="Choose Friday, May 10th, 1991"').click()
     browser.driver.execute_script("window.scrollBy(0,500)")
     browser.element('#subjectsContainer').click()
-
+    browser.element('#subjectsInput').type('e')
+    browser.element('#react-select-2-option-3').click()
+    browser.element('#subjectsContainer').click()
+    browser.element('#subjectsInput').type('c')
+    browser.element('#react-select-2-option-2').click()
     browser.element('[for="hobbies-checkbox-1"]').click()
     browser.element('[for="hobbies-checkbox-3"]').click()
     fileinput = browser.element('#uploadPicture')
@@ -23,4 +27,5 @@ def test_1(browser_management):
     browser.element('#react-select-3-option-1').click()
     browser.element('#city').click()
     browser.element('#react-select-4-option-2').click()
+    browser.element('#submit').click()
     f
