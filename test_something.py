@@ -1,19 +1,19 @@
-from selene import browser, have, be
+from selene import browser, have
 import os
 import variables
 import testdata
-
+from testdata import user1
 
 def test_1(browser_management):
-    browser.element(variables.FirstName).type(testdata.FirstName)
+    browser.element(variables.FirstName).type(user1.first_name)
 
-    browser.element(variables.LastName).type(testdata.LastName)
+    browser.element(variables.LastName).type(user1.last_name)
 
-    browser.element(variables.Email).type(testdata.Email)
+    browser.element(variables.Email).type(user1.email)
 
     browser.element(variables.Gender).click()
 
-    browser.element(variables.Mobile).type(testdata.Mobile)
+    browser.element(variables.Mobile).type(user1.mobile)
 
     browser.element(variables.DateofBirth).click()
     browser.element(variables.Month).click()
@@ -35,7 +35,7 @@ def test_1(browser_management):
     fileinput = browser.element(variables.Picture)
     fileinput.send_keys(os.getcwd() + "\img\gomer.png")
 
-    browser.element(variables.CurrentAddress).type(testdata.Address)
+    browser.element(variables.CurrentAddress).type(user1.address)
 
     browser.element(variables.State).click()
     browser.element('#react-select-3-option-1').click()
@@ -45,14 +45,13 @@ def test_1(browser_management):
     browser.element(variables.Submit).click()
 
     browser.element('#example-modal-sizes-title-lg').should(have.text('Thanks for submitting the form'))
-    browser.element("//td[text()='Student Name']/following-sibling::td").should(
-        have.text(testdata.FirstName + ' ' + testdata.LastName))
-    browser.element("//td[text()='Student Email']/following-sibling::td").should(have.text(testdata.Email))
+    browser.element("//td[text()='Student Name']/following-sibling::td").should(have.text(user1.first_name + ' ' + user1.last_name))
+    browser.element("//td[text()='Student Email']/following-sibling::td").should(have.text(user1.email))
     browser.element("//td[text()='Gender']/following-sibling::td").should(have.text('Male'))
-    browser.element("//td[text()='Mobile']/following-sibling::td").should(have.text(testdata.Mobile))
+    browser.element("//td[text()='Mobile']/following-sibling::td").should(have.text(user1.mobile))
     browser.element("//td[text()='Date of Birth']/following-sibling::td").should(have.text('10 May,1991'))
     browser.element("//td[text()='Subjects']/following-sibling::td").should(have.text('Commerce, Computer Science'))
     browser.element("//td[text()='Hobbies']/following-sibling::td").should(have.text('Sports, Music'))
     browser.element("//td[text()='Picture']/following-sibling::td").should(have.text('gomer.png'))
-    browser.element("//td[text()='Address']/following-sibling::td").should(have.text(testdata.Address))
+    browser.element("//td[text()='Address']/following-sibling::td").should(have.text(user1.address))
     browser.element("//td[text()='State and City']/following-sibling::td").should(have.text('Uttar Pradesh Merrut'))
