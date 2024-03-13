@@ -1,7 +1,6 @@
 from selene import browser, have
 import os
 import variables
-import testdata
 from testdata import user1
 
 def test_1(browser_management):
